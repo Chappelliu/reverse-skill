@@ -6,9 +6,9 @@
 
 ## 统计
 
-- 真实项目数：6
+- 真实项目数：7
 - 种子参考数：17
-- 总条目数：23
+- 总条目数：24
 
 ## 按场景分类
 
@@ -51,6 +51,7 @@
 
 ### 其他
 
+- [2026-06-17_attack-coverage-self-audit](./2026-06-17_attack-coverage-self-audit.md) — 本包对照 MITRE ATT&CK 14 战术覆盖度元评审 + MCP 工具补充建议
 - [[种子] seed-012_log4shell-jndi-rce](./seed-012_log4shell-jndi-rce.md)
 
 ## 使用说明
