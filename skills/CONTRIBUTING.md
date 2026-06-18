@@ -12,7 +12,33 @@
 2. `MUST` 在 `SKILL.md` 末尾加入“任务完成自检”区块，未通过不得宣称完成。
 3. `MUST` 使用 RFC 2119 术语（`MUST/MUST NOT/SHOULD/MAY`），避免建议式语气。
 4. `MUST` 明确“缺工具唯一动作是 bootstrap”，禁止猜路径与手工乱装。
-5. `MUST` 明确“路由未命中时需要提议新增 skill”，不要硬塞现有模块。
+5. `MUST` 明确”路由未命中时需要提议新增 skill”，不要硬塞现有模块。
+
+## 0.1 ATT&CK 双语标注规范（MUST follow）
+
+任何新增/修改的 skill 文档（含 `SKILL.md`、`references/*.md`）若描述具体战术阶段、攻击技术、检测方法，**MUST** 在章节标题末尾追加 ATT&CK 战术或技术 ID。规范如下：
+
+| 层级 | 格式 | 示例 |
+|------|------|------|
+| 战术（H2 一般） | `## <中文> / <English> (TAxxxx)` | `## 凭证获取 / Credential Access (TA0006)` |
+| 技术（H3 多见） | `### <中文别名> / <English> (Txxxx)` 或 `(Txxxx.xxx)` | `### Kerberoasting / Kerberos 攻击 (T1558.003)` |
+| 多技术合并节 | 末尾列举主 ID，逗号分隔 | `### Windows 提权 / Windows PrivEsc (T1548, T1134, T1574)` |
+
+**规则**：
+
+1. **唯一规范映射表** 在 `pentest-tools/references/network-attack-defense.md` §MITRE ATT&CK 映射，禁止在别处重复维护映射表，只能链接。
+2. 新增章节涉及战术阶段时，**MUST** 在末尾追加 ID。漏标会被 lint 拒收。
+3. 双语标题先中文、再 `/`、再英文，再括号 ID（与现有风格一致）。
+4. 子技术（dot-notation，如 `T1558.003`）优先使用，更具体；不知子号时使用主技术号。
+5. 战术段落按主战术 ID 标注；同段落涉及多技术，列出主要 3–5 个 ID 即可。
+
+**lint 校验**：
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File skills\scripts\lint-attack-tags.ps1
+```
+
+退出码 0 = 全部通过；非零 = 存在漏标，stderr 列出文件:行号。CI/PR 校验前 MUST 通过。
 ## 1. 什么时候该新增 skill
 
 满足以下任一条件时，应该新增独立 skill 而不是往现有模块里塞：

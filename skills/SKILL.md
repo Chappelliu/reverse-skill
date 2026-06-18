@@ -2,6 +2,8 @@
 
 本目录收录了一系列逆向工程相关的技能模块，每个子目录是一个独立模块，内含 `SKILL.md` 描述其适用场景、工具链和工作流程。
 
+> **ATT&CK 14-tactic canonical map** → [`pentest-tools/references/network-attack-defense.md` §MITRE ATT&CK 映射](pentest-tools/references/network-attack-defense.md#mitre-attck-映射canonical-map--全包唯一规范映射表). 全包唯一规范映射表，禁止在其他文件重复维护。
+
 ## CRITICAL: 路由执行契约（必须立即执行）
 
 读完本文件后，不允许只回复“已读/已理解”。必须按顺序执行：

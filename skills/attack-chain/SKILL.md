@@ -76,7 +76,7 @@ attack-chain/SKILL.md（本文件）
 
 ---
 
-## 一、信息收集阶段（Reconnaissance）
+## 一、信息收集阶段 / Reconnaissance (TA0043)
 
 ### 1.1 企业数字资产测绘
 
@@ -159,7 +159,7 @@ wpscan --url https://target.com --enumerate p,t,u
 
 ---
 
-## 二、边界突破阶段（Initial Access）
+## 二、边界突破阶段 / Initial Access (TA0001)
 
 ### 2.1 Web 漏洞利用（高频突破点）
 
@@ -266,7 +266,7 @@ curl http://169.254.169.254/latest/meta-data/iam/security-credentials/
 
 ---
 
-## 三、权限提升阶段（Privilege Escalation）
+## 三、权限提升阶段 / Privilege Escalation (TA0004)
 
 ### 3.1 Windows 提权
 
@@ -344,7 +344,7 @@ aws iam list-attached-user-policies --user-name compromised-user
 
 ---
 
-## 四、横向移动阶段（Lateral Movement）
+## 四、横向移动阶段 / Lateral Movement (TA0008)
 
 ### 4.1 凭据获取
 
@@ -433,7 +433,7 @@ certipy req -u user@domain -p password -ca CA-NAME -template VulnTemplate
 
 ---
 
-## 五、权限维持阶段（Persistence）
+## 五、权限维持阶段 / Persistence (TA0003)
 
 ### 5.1 Windows 持久化
 
@@ -505,7 +505,7 @@ systemctl enable update.service
 
 ---
 
-## 六、EDR/AV 绕过（Evasion）
+## 六、EDR/AV 绕过 / Defense Evasion (TA0005)
 
 ### 6.1 核心绕过思路
 
@@ -540,7 +540,7 @@ systemctl enable update.service
 
 ---
 
-## 七、痕迹清理（Anti-Forensics）
+## 七、痕迹清理 / Anti-Forensics (T1070)
 
 ```bash
 # Windows 日志清除

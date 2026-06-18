@@ -2,6 +2,8 @@
 
 Route tasks to the most appropriate skill module by target type, user intent, and toolchain.
 
+> **ATT&CK 14-tactic canonical map** → [`pentest-tools/references/network-attack-defense.md` §MITRE ATT&CK 映射](pentest-tools/references/network-attack-defense.md#mitre-attck-映射canonical-map--全包唯一规范映射表). Single source of truth — do NOT duplicate elsewhere. New tactic-level sections MUST be tagged bilingual with `(Txxxx)`.
+
 ## CRITICAL: Routing Execution Protocol
 
 1. **MUST** complete routing BEFORE executing. Do NOT "do first, route later".
