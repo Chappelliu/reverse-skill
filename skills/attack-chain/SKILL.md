@@ -540,6 +540,20 @@ systemctl enable update.service
 
 ---
 
+## 六.5 数据采集 / Collection (TA0009)
+
+> 详细技术与防御视角见 [`pentest-tools/references/network-attack-defense.md` §采集 / Collection (TA0009)](../pentest-tools/references/network-attack-defense.md#采集--collection-ta0009)。
+
+落地后从已控终端取出有价值数据：屏幕/键盘/剪贴板、邮件、浏览器与密码库、本地/网络/云存储、SharePoint/Confluence/GitLab、归档与暂存。在 Phase 6 (Defense Evasion) 之后、Phase 6.7 (Exfiltration) 之前执行。
+
+## 六.7 数据外带 / Exfiltration (TA0010)
+
+> 详细技术与防御视角见 [`pentest-tools/references/network-attack-defense.md` §外带 / Exfiltration (TA0010)](../pentest-tools/references/network-attack-defense.md#外带--exfiltration-ta0010)。
+
+把采集到的数据带出目标网络：C2 信道、Web 服务（Telegram/GitHub/Mega/Pastebin）、备用协议（DNS/ICMP）、分块、转存到攻击者云账号。**先于 Phase 7 (Anti-Forensics) 完成**，避免清理后还要再开一条出站路径暴露自己。
+
+---
+
 ## 七、痕迹清理 / Anti-Forensics (T1070)
 
 ```bash
