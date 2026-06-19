@@ -76,6 +76,88 @@ attack-chain/SKILL.md（本文件）
 
 ---
 
+## 〇、资源开发 / Resource Development (TA0042)
+
+> **授权前置**：本阶段所有动作 MUST 列入 SOW (Statement of Work) / 授权书。基础设施获取虽然不直接打目标，但 **属于受授权约束的红队动作**——例如使用攻击者控制的域名/服务器对客户域名做 phishing 演练，主控方需要知情。详见 `RULES.md` Security Boundaries 与 `field-journal/precedent-auth.md`。
+>
+> **本节为检查清单 + 外链方法论**，不写完整 playbook。原因：（1）该层 tradecraft 时效性强、防御方读得多，低保真内容 6 个月就过期；（2）写出可直接套用的攻击基础设施搭建脚本会越过授权边界。
+
+### 0.1 基础设施获取 / Acquire Infrastructure (T1583)
+
+```text
+Pre-engagement 检查清单：
+□ 钓鱼/C2 域名注册（T1583.001）
+  - 主域名 (registered for >30d)、相似域 (typosquat / IDN homograph)、置换字符域
+  - 老化策略：注册后挂普通博客/合法着陆页 ≥ 30 天再用
+  - 域名分级：phishing 域 / C2 主域 / 重定向域 / 备用兜底域，互不复用
+  - 阻断检测面：域名信誉库（VirusTotal / urlscan / Cisco Umbrella / Fortiguard）
+□ VPS / 跳板机 (T1583.004)
+  - 区域选择：避开目标本地区域；不复用既有红队 IP 段
+  - 控制面：操作机 → SSH bastion → 落地机，三层隔离
+  - 协议指纹：默认 SSH/HTTPS 端口；禁默认 banner（OpenSSH 版本号、Cobalt Strike NanoHTTPD 特征）
+□ CDN / 域前置 (T1090.004)
+  - Cloudflare / Fastly / Azure Front Door 三选一
+  - 注意：2024 年后 AWS CloudFront、Azure Front Door 已禁绝大多数 domain fronting，需用 SNI 切分或 Cloudflare Workers 替代
+□ 重定向链 (T1090)
+  - C2 流量经 Apache mod_rewrite / nginx proxy_pass / Cloudflare Worker 中转
+  - 仅对授权目标 IP 段开放，其他来源返回合法落地页
+□ 邮件投递基建 (T1583.001 + T1585.002)
+  - SPF / DKIM / DMARC 全配通过 mail-tester 100/100
+  - 反向 DNS 与 HELO 一致；IP 入主流邮件信誉表 ≥ 7 天
+```
+
+### 0.2 基础设施入侵 / Compromise Infrastructure (T1584)
+
+> **红队禁用 — 仅列防御视角**。利用已被攻陷的合法网站/CDN 做跳板属于 APT 常见手法，但 **未经多方授权情况下** 在红队工程里使用会同时违反对目标和对第三方两个授权边界。
+>
+> 本仓不提供攻击教程；如发现真实样本走 T1584 路径，写到 `malware-analysis/` 下做防御画像即可。
+
+### 0.3 能力开发 / Develop Capabilities (T1587)
+
+```text
+□ 载荷开发 (T1587.001)
+  - 加载器：自研 shellcode loader（避免公开模板被特征化）
+  - 混淆：字符串/控制流混淆 + Reflective DLL / PE
+  - 详细指引见 edr-bypass-re/SKILL.md
+□ 可塑 C2 profile (T1587.001)
+  - Cobalt Strike Malleable C2：HTTP header / URI / Body 全可塑
+  - Sliver: implant generation 可指定 protocol/transport
+  - 仿冒目标真实存在的 SaaS 通信（Slack webhook 模板、Office365 心跳）
+□ 数字证书 (T1587.002 自签 / T1588.003 获取)
+  - 仅 **合法获取**：OV/EV 证书购买（用 sock-puppet 公司主体）
+  - 自签 + 测试 CA：仅用于内部红队靶场
+  - **禁止**：窃取合法主体证书私钥用于真实演练
+□ 字典与社工资料 (T1587.001)
+  - 目标员工字典：脉脉/LinkedIn 抓取 → 工号/邮箱/姓名规则生成
+  - 行业关键词字典：从招聘信息/技术博客中提炼
+```
+
+### 0.4 账号准备 / Establish Accounts (T1585)
+
+```text
+□ Sock-puppet 社交账号 (T1585.001)
+  - LinkedIn / 脉脉 / 微信：≥ 3 个月历史、≥ 50 联系人、≥ 10 条原创帖
+  - 头像：StyleGAN 生成 + 反搜（Yandex / Google）确认未在它处出现
+  - **禁用**：盗用真实人物身份
+□ 邮件账号 (T1585.002)
+  - 与 sock-puppet 身份匹配的私域邮箱（Proton/自建 mail server）
+  - 不要用 Gmail/QQ 邮箱发钓鱼（信誉低 + 易被识破）
+□ 云开发者账号 (T1585.003)
+  - 用于 SaaS 钓鱼（OAuth app）、托管 phishing 资产
+  - 注册时使用专门的 KYC 资料链
+```
+
+### 0.5 与下游 Skill 的协作
+
+| 子动作 | 下游 |
+|--------|------|
+| 钓鱼载荷构建 | `attack-chain/SKILL.md` §2.3 钓鱼攻击 + `pentest-tools/payloads/` |
+| EDR/AV 规避 | `edr-bypass-re/SKILL.md` |
+| 供应链入口 (T1195) | `supply-chain-security/SKILL.md`（防御侧） |
+| 合法证书与签名 | `pentest-tools/references/network-attack-defense.md` §防御体系建设 |
+
+---
+
 ## 一、信息收集阶段 / Reconnaissance (TA0043)
 
 ### 1.1 企业数字资产测绘

@@ -115,6 +115,7 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | "数据采集 / collection / 截屏键盘 / 邮件采集" | `pentest-tools/references/network-attack-defense.md#采集--collection-ta0009` |
 | "数据外带 / exfiltration / exfil / DNS 隧道 / 云外发" | `pentest-tools/references/network-attack-defense.md#外带--exfiltration-ta0010` |
 | "full pentest / end-to-end" | `attack-chain/SKILL.md` — full chain planning |
+| "resource development / 资源开发 / phishing infra / C2 infra / 基础设施搭建 / 域名前置 / domain fronting / sock puppet / malleable C2" | `attack-chain/SKILL.md` §〇 Resource Development (TA0042) |
 | "from external to domain controller" | `attack-chain/SKILL.md` — cross-phase path orchestration |
 | "attack surface assessment / path planning" | `attack-chain/SKILL.md` — path planning decision tree |
 | "got shell, what next / post-exploitation" | `attack-chain/SKILL.md` — plan from current foothold |
