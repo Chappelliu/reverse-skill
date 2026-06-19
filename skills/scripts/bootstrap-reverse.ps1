@@ -1,4 +1,4 @@
-#requires -Version 5
+﻿#requires -Version 5
 
 [CmdletBinding()]
 param(
@@ -946,6 +946,50 @@ function Ensure-Capability {
                 }
                 return $true
             }
+        }
+        'powershell-module' {
+            # canAutoInstall=false entries (e.g. atomic-redteam, microburst)
+            # — print install hint instead of throwing, since module install
+            # has user-decision elements (telemetry, scope, atomics download size).
+            Write-Host "[$Name] PowerShell-module capability is documented as manual." -ForegroundColor Yellow
+            if ($definition.PSObject.Properties['psGalleryName'] -and $definition.psGalleryName) {
+                Write-Host "  PSGallery name: $($definition.psGalleryName)" -ForegroundColor Yellow
+                Write-Host "  Try:  Install-Module $($definition.psGalleryName) -Scope CurrentUser" -ForegroundColor Cyan
+            }
+            if ($definition.PSObject.Properties['manualInstallHint'] -and $definition.manualInstallHint) {
+                Write-Host "  Hint: $($definition.manualInstallHint)" -ForegroundColor Cyan
+            }
+            if ($definition.PSObject.Properties['docsUrl'] -and $definition.docsUrl) {
+                Write-Host "  Docs: $($definition.docsUrl)" -ForegroundColor Cyan
+            }
+            return $false
+        }
+        'manual-only' {
+            # canAutoInstall=false; documents the manual route. Never auto-installs.
+            Write-Host "[$Name] Marked manual-only — bootstrap will not auto-install." -ForegroundColor Yellow
+            if ($definition.PSObject.Properties['manualInstallHint'] -and $definition.manualInstallHint) {
+                Write-Host "  Hint: $($definition.manualInstallHint)" -ForegroundColor Cyan
+            }
+            if ($definition.PSObject.Properties['docsUrl'] -and $definition.docsUrl) {
+                Write-Host "  Docs: $($definition.docsUrl)" -ForegroundColor Cyan
+            }
+            return $false
+        }
+        'go-install' {
+            # Pre-existing entry (pentestswarm) used this kind without a handler.
+            # Not auto-installing here; print docs and continue. Real install
+            # path: `go install <goPackage>` or use `fallbackKind: docker-image`.
+            Write-Host "[$Name] go-install capability is not auto-bootstrapped." -ForegroundColor Yellow
+            if ($definition.PSObject.Properties['goPackage'] -and $definition.goPackage) {
+                Write-Host "  Try:  go install $($definition.goPackage)" -ForegroundColor Cyan
+            }
+            if ($definition.PSObject.Properties['fallbackKind'] -and $definition.fallbackKind -eq 'docker-image' -and $definition.dockerImage) {
+                Write-Host "  Or:   docker pull $($definition.dockerImage)" -ForegroundColor Cyan
+            }
+            if ($definition.PSObject.Properties['docsUrl'] -and $definition.docsUrl) {
+                Write-Host "  Docs: $($definition.docsUrl)" -ForegroundColor Cyan
+            }
+            return $false
         }
         default {
             throw "Unsupported bootstrap kind: $($definition.bootstrapKind)"

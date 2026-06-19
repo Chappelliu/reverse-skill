@@ -42,12 +42,24 @@
 见报告 §6 编辑清单：14 战术映射 + Txxxx 列；新增 `cloud-attack/`、`adversary-emulation/`、`collection-exfil.md`；`kali-mcp-ecosystem.md` 增补 MCP（Prowler/Pacu/CloudFox/ROADtools、Caldera/Atomic、Volatility/tshark、Semgrep/CodeQL、MobSF/Frida、Shodan/VT/MISP/cve-search）。最高 ROI：技术 ID 标注 + Navigator 层输出。
 
 ## 进化动作
-- [ ] 更新了路由矩阵（建议项，待用户确认是否建子 skill）
-- [ ] 更新了 tool-index
-- [ ] 更新了 bootstrap-manifest
-- [ ] 更新了子 skill 文档
+
+> 本条目跨两轮：6/17 完成审计与报告（commit `f3c12fd`），6/18–6/19 完成全部落地（commit `91a009c`–`b87c67a`）。下面是落地后状态。
+
+- [x] 更新了路由矩阵 — `routing.md` 加 17 行新意图（recon 5 / cloud 4 / emulation 3 / cred access 6 / collection-exfil 2 / resource-dev 1）
+- [x] 更新了 tool-index — `tool-index.md` 加 5 行（subfinder/dnsx/naabu/httpx/katana），其余因 `tool-index.md` gitignore 待 `refresh-tool-index.ps1` 本地刷新
+- [x] 更新了 bootstrap-manifest — 18 → 43 capabilities（含 13 cloud / 3 emulation / 4 cred access / 5 recon）
+- [x] 更新了子 skill 文档 — 新建 `cloud-attack/`（4 文件）、`adversary-emulation/`（6 文件）；扩 `network-attack-defense.md` / `attack-chain/SKILL.md` / `kali-mcp-ecosystem.md` / `firmware-pentest/SKILL.md` / `mobile-reverse/SKILL.md` / `RULES.md`
 - [x] 新增了 pitfalls 记录（本条 + 报告）
 - [x] 产出正式报告 `docs/attack-coverage-audit.md`
+- [x] 新增 lint 工具 `skills/scripts/lint-attack-tags.ps1`（CONTRIBUTING.md §0.1 双语标注规范执行器）
+- [x] 新增 Navigator layer 生成器 `skills/adversary-emulation/scripts/emit-navigator-layer.ps1`
+
+## 落地度量
+
+- ATT&CK 14 战术映射（before/after）：12 → **14**
+- 全仓 Txxxx 唯一标识符：0 → **136**
+- bootstrap manifest capabilities：18 → **43**
+- 11 commits：`f3c12fd docs → 91a009c P0.1 → 1512f8d P0.2 → 4847feb P0.3 → ef51b85 P0.4 → a050189 P1.5 → 2a0d49d P1.6 → 4b0139c P1.7 → a7c6b4e P2.8 → 0b450a4 P2.9 → b87c67a P2.10`
 
 ## 环境信息
 - OS: Windows 11 / PowerShell 5.1
