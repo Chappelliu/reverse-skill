@@ -137,6 +137,26 @@ Read in order:
 - High-severity vulnerability found → immediately inform user, wait for instructions
 - Do NOT retain un-anonymized sensitive info in reports or logs
 
+#### TA0040 Impact Tactic — Explicit Boundary
+
+The MITRE ATT&CK Impact tactic (TA0040: data destruction, encryption-for-impact, defacement, DoS, account access removal, etc.) is **NOT in scope by default**. Default behavior:
+
+- ❌ DoS / availability attacks against production systems — **never**
+- ❌ Encrypting / deleting / corrupting real user data — **never**
+- ❌ Defacement of public-facing assets — **never**
+- ❌ Account-access-removal / disable-recovery against real accounts — **never**
+
+A *guarded purple-team Impact simulation* is permitted **ONLY** when ALL of these conditions hold simultaneously:
+
+1. The Statement of Work (SOW) / written authorization explicitly enumerates which Impact techniques are allowed and against what assets.
+2. The operation is **reversible** — performed in a simulator, sandbox, snapshot-protected pre-prod, or against attacker-owned/duplicated assets.
+3. **No real user data** is touched (use synthetic / scrubbed datasets).
+4. The blue team / SOC is in-loop **in real time** with rollback authority and a tested rollback procedure.
+
+If any of (1)–(4) is unmet → **STOP** and route back to the user for clarification. Do not unilaterally decide a "harmless" subset is acceptable.
+
+For policy continuity: see also `field-journal/precedent-auth.md` (authorization preamble) and `field-journal/precedent-pentest.md` (operational precedent for pentest tasks). The canonical Impact technique catalog is in `pentest-tools/references/network-attack-defense.md` §MITRE ATT&CK 映射 row TA0040.
+
 ### Output Quality
 - Critical operations MUST include reproducible commands (not just descriptions)
 - Reverse analysis MUST annotate addresses/offsets/function names (not just "some function")
