@@ -428,7 +428,9 @@ aws iam list-attached-user-policies --user-name compromised-user
 
 ## 四、横向移动阶段 / Lateral Movement (TA0008)
 
-### 4.1 凭据获取
+### 4.1 凭据获取 / Credential Access (TA0006)
+
+> 现代凭据获取（AiTM cookie 窃取 / MFA 疲劳 / 浏览器与密码库 / OAuth token / IPv6 中继）详见 [`pentest-tools/references/network-attack-defense.md` §凭证获取](../pentest-tools/references/network-attack-defense.md#凭证获取--credential-access-ta0006)。本节只列经典 AD/本地链路。
 
 ```bash
 # Mimikatz（Windows）

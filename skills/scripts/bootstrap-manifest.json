@@ -410,6 +410,42 @@
       "canAutoInstall": true,
       "verifyCommand": "python -c \"import attackcti\"",
       "note": "ATT&CK STIX 数据 SDK，emit-navigator-layer.ps1 可选用以增强 layer comment（技术名/描述）。"
+    },
+    {
+      "name": "evilginx",
+      "bootstrapKind": "manual-only",
+      "docsUrl": "https://github.com/kgretzky/evilginx2",
+      "canAutoInstall": false,
+      "manualInstallHint": "Evilginx2 是 Go 项目：git clone https://github.com/kgretzky/evilginx2 && cd evilginx2 && go build && sudo ./evilginx -p ./phishlets/。bootstrap 不打包：phishlet 频繁更新（社区维护），且需要 root 权限运行。"
+    },
+    {
+      "name": "mitmproxy",
+      "bootstrapKind": "pip-package",
+      "pipPackage": "mitmproxy",
+      "docsUrl": "https://mitmproxy.org/",
+      "canAutoInstall": true,
+      "verifyCommand": "mitmproxy",
+      "note": "紫队 AiTM 检测验证用；不用于 Evilginx 替代（mitmproxy 没有 phishlet 重写能力）。"
+    },
+    {
+      "name": "hackbrowserdata",
+      "bootstrapKind": "github-release-zip",
+      "repo": "moonD4rk/HackBrowserData",
+      "assetRegex": "^hack-browser-data-windows-amd64-.*\\.zip$",
+      "installDir": "%USERPROFILE%\\Tools\\hackbrowserdata",
+      "docsUrl": "https://github.com/moonD4rk/HackBrowserData",
+      "canAutoInstall": true,
+      "verifyCommand": "HackBrowserData",
+      "note": "T1555.003 浏览器凭据库；解 DPAPI 加密的 Chromium/Edge/Firefox cookies+passwords。"
+    },
+    {
+      "name": "mitm6",
+      "bootstrapKind": "pip-package",
+      "pipPackage": "mitm6",
+      "docsUrl": "https://github.com/dirkjanm/mitm6",
+      "canAutoInstall": true,
+      "verifyCommand": "mitm6",
+      "note": "T1557.003 IPv6 NTLM relay；与 ntlmrelayx 配合（impacket）。"
     }
   ]
 }

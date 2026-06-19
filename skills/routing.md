@@ -95,6 +95,12 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | "adversary emulation / 对抗模拟 / 紫队 / purple team / Atomic Red Team / invoke-atomictest" | `adversary-emulation/references/atomic-redteam-quickstart.md` |
 | "Caldera / sandcat agent / adversary profile / threat-informed" | `adversary-emulation/references/caldera-purple-team.md` |
 | "ATT&CK Navigator / navigator layer / coverage heatmap / 攻击覆盖热图" | `adversary-emulation/references/navigator-layer-schema.md` |
+| "AiTM / Adversary in the Middle / Evilginx / session cookie 窃取 / 钓鱼绕 MFA" | `pentest-tools/references/network-attack-defense.md#aitm-会话-cookie-窃取--aitm-session-cookie-theft-t1539` |
+| "MFA fatigue / push bombing / MFA 疲劳" | `pentest-tools/references/network-attack-defense.md#mfa-疲劳--mfa-fatigue--push-bombing-t1621` |
+| "浏览器密码 / Chrome cookies / HackBrowserData / 浏览器凭据" | `pentest-tools/references/network-attack-defense.md#浏览器凭据库--browser-credentials-t1555003` |
+| "KeePass / 密码管理器攻击 / KeeThief" | `pentest-tools/references/network-attack-defense.md#密码管理器--password-managers-t1555005` |
+| "OAuth token theft / Refresh Token 滥用 / TokenSmith / TeamFiltration" | `pentest-tools/references/network-attack-defense.md#oauth--应用-token-窃取--oauth-token-theft-t1528` |
+| "IPv6 中继 / mitm6 / NTLM relay over IPv6" | `pentest-tools/references/network-attack-defense.md#ipv6-中继--ipv6-ntlm-relay-t1557003` |
 | "Prompt injection / AI security" | `llm-security/SKILL.md` — OWASP LLM + ASI Top 10 |
 | "internal network / lateral movement" | `pentest-tools/SKILL.md` + `references/network-attack-defense.md` |
 | "privilege escalation" | `pentest-tools/references/network-attack-defense.md` — escalation section |
