@@ -1,0 +1,28 @@
+{
+  "name": "engagement-name-here",
+  "description": "Replace with engagement description (date, scope, target environment).",
+  "domain": "enterprise-attack",
+  "versions": {
+    "attack": "15",
+    "navigator": "5.1.0",
+    "layer": "4.5"
+  },
+  "sorting": 0,
+  "viewMode": 0,
+  "hideDisabled": false,
+  "techniques": [],
+  "gradient": {
+    "colors": ["#ff6666", "#ffe766", "#8ec843"],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "legendItems": [
+    { "label": "Detected (score=100)", "color": "#43a047" },
+    { "label": "Logged but no rule (score=50)", "color": "#fdd835" },
+    { "label": "Not detected (score=0)", "color": "#e53935" }
+  ],
+  "metadata": [
+    { "name": "engagement-id", "value": "" },
+    { "name": "operator", "value": "{anonymized}" }
+  ]
+}

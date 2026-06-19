@@ -111,6 +111,24 @@ python "<SKILL_ROOT>/diagram-generator/scripts/render_diagram.py" input.puml --f
 
 The renderer is intentionally dependency-tolerant. It tries common local tools and reports actionable installation hints if a renderer is unavailable. Do not claim an image was rendered unless the script completed successfully and the output file exists.
 
+## Navigator 热图渲染（与 adversary-emulation/ 联动）
+
+ATT&CK Navigator layer JSON 不属于 Mermaid/Graphviz/PlantUML 的覆盖范围，但本 skill 提供专用的"渲染入口"以闭合 P0.1 标注 → P1.6 emit → 可视化的链路。
+
+```powershell
+# 推荐路径（最少摩擦）：上传到在线 Navigator 截图
+# https://mitre-attack.github.io/attack-navigator/  → Open Existing Layer
+
+# 离线路径（自动化集成时用）：
+# 1. git clone https://github.com/mitre-attack/attack-navigator.git
+# 2. cd attack-navigator/nav-app && npm install && npm run build
+# 3. npx serve -l 4200 dist
+# 4. puppeteer / Playwright 截屏 http://localhost:4200/?layerURL=...
+```
+
+输入文件：`adversary-emulation/scripts/emit-navigator-layer.ps1` 产出的 `attack-navigator-layer.json`。
+方案：当前阶段（P1.6）保留**手动渲染**为主，自动渲染脚本作为后续增强项；这避免在 attack-navigator-cli 生态尚不稳定时承诺不可靠的自动化。
+
 ## Validation checklist
 
 Before finalizing:

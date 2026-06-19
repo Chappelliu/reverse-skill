@@ -92,6 +92,9 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | "AWS pentest / 已拿 AWS 凭据 / IAM 提权 / S3 滥用 / role chaining" | `cloud-attack/references/aws-attack-flow.md` |
 | "Azure / Entra ID / Entra red team / Refresh Token / Service Principal / Managed Identity 滥用" | `cloud-attack/references/azure-entra-flow.md` |
 | "GCP red team / SA impersonation / GCS / 已拿 service-account JSON" | `cloud-attack/references/gcp-attack-flow.md` |
+| "adversary emulation / 对抗模拟 / 紫队 / purple team / Atomic Red Team / invoke-atomictest" | `adversary-emulation/references/atomic-redteam-quickstart.md` |
+| "Caldera / sandcat agent / adversary profile / threat-informed" | `adversary-emulation/references/caldera-purple-team.md` |
+| "ATT&CK Navigator / navigator layer / coverage heatmap / 攻击覆盖热图" | `adversary-emulation/references/navigator-layer-schema.md` |
 | "Prompt injection / AI security" | `llm-security/SKILL.md` — OWASP LLM + ASI Top 10 |
 | "internal network / lateral movement" | `pentest-tools/SKILL.md` + `references/network-attack-defense.md` |
 | "privilege escalation" | `pentest-tools/references/network-attack-defense.md` — escalation section |

@@ -178,6 +178,7 @@ After task completion (vulnerability verified / reverse complete / flag captured
 □ 4. Persist searched knowledge to references/ (if web searched during task)
 □ 5. Ask about community contribution
 □ 6. Update system indexes (_index.md, routing.md if new scenario found)
+□ 7. Emit ATT&CK Navigator layer JSON (REQUIRED when task covers ≥3 ATT&CK tactics; see adversary-emulation/scripts/emit-navigator-layer.ps1)
 ```
 
 ---

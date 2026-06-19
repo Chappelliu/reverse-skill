@@ -384,6 +384,32 @@
       "docsUrl": "https://steampipe.io/downloads",
       "canAutoInstall": false,
       "manualInstallHint": "Steampipe 在 Windows 仅支持 WSL2。WSL2 内：sudo /bin/sh -c \"$(curl -fsSL https://steampipe.io/install/steampipe.sh)\"；之后 steampipe plugin install aws azure gcp。"
+    },
+    {
+      "name": "atomic-redteam",
+      "bootstrapKind": "powershell-module",
+      "psModule": "Invoke-AtomicRedTeam",
+      "psGalleryName": "invoke-atomicredteam",
+      "docsUrl": "https://github.com/redcanaryco/invoke-atomicredteam",
+      "canAutoInstall": false,
+      "verifyCommand": "Get-Module Invoke-AtomicRedTeam -ListAvailable",
+      "manualInstallHint": "PSGallery 安装：IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing); Install-AtomicRedTeam -getAtomics。bootstrap canAutoInstall=false 因为安装会下载 atomic-red-team 仓库（~500MB），用户应明确同意。"
+    },
+    {
+      "name": "caldera",
+      "bootstrapKind": "manual-only",
+      "docsUrl": "https://caldera.mitre.org/",
+      "canAutoInstall": false,
+      "manualInstallHint": "Docker：docker run -d --name caldera -p 7010:7010 -p 7011:7011 -p 8888:8888 mitre/caldera:latest。或 git clone https://github.com/mitre/caldera --recursive 后 pip install -r requirements.txt && python server.py --insecure。bootstrap manifest 不打包，避免在没有 Docker 的环境失败。"
+    },
+    {
+      "name": "attack-cti",
+      "bootstrapKind": "pip-package",
+      "pipPackage": "attackcti",
+      "docsUrl": "https://github.com/hslatman/attack-cti",
+      "canAutoInstall": true,
+      "verifyCommand": "python -c \"import attackcti\"",
+      "note": "ATT&CK STIX 数据 SDK，emit-navigator-layer.ps1 可选用以增强 layer comment（技术名/描述）。"
     }
   ]
 }

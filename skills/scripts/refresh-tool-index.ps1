@@ -63,6 +63,9 @@ $scriptRefs = @{
     'azurehound' = @('cloud-attack/references/azure-entra-flow.md')
     'microburst' = @('cloud-attack/references/azure-entra-flow.md')
     'steampipe' = @('cloud-attack/SKILL.md')
+    'atomic-redteam' = @('adversary-emulation/references/atomic-redteam-quickstart.md')
+    'caldera' = @('adversary-emulation/references/caldera-purple-team.md')
+    'attack-cti' = @('adversary-emulation/references/navigator-layer-schema.md')
 }
 
 $reports = Get-ReverseToolReport
@@ -96,7 +99,7 @@ $markdownContent = ($markdownLines -join [Environment]::NewLine) + [Environment]
 $markdownContent | Set-Content -LiteralPath $OutputMarkdown -Encoding utf8
 
 # --- Capability status view ---
-$capabilityNames = @('jadx', 'apktool', 'frida', 'idalib-mcp', 'jshookmcp', 'anything-analyzer', 'idapro', 'r2', 'adb', 'agent-browser', 'ghidra-mcp', 'seclists', 'proxycat', 'burpsuite-mcp', 'nmap', 'subfinder', 'dnsx', 'naabu', 'httpx', 'katana', 'aws-cli', 'az-cli', 'gcloud', 'kubectl', 'prowler', 'scoutsuite', 'pmapper', 'pacu', 'cloudfox', 'roadtools', 'azurehound', 'microburst', 'steampipe')
+$capabilityNames = @('jadx', 'apktool', 'frida', 'idalib-mcp', 'jshookmcp', 'anything-analyzer', 'idapro', 'r2', 'adb', 'agent-browser', 'ghidra-mcp', 'seclists', 'proxycat', 'burpsuite-mcp', 'nmap', 'subfinder', 'dnsx', 'naabu', 'httpx', 'katana', 'aws-cli', 'az-cli', 'gcloud', 'kubectl', 'prowler', 'scoutsuite', 'pmapper', 'pacu', 'cloudfox', 'roadtools', 'azurehound', 'microburst', 'steampipe', 'atomic-redteam', 'caldera', 'attack-cti')
 $capabilityRows = @()
 foreach ($capName in $capabilityNames) {
     $state = Get-ReverseCapabilityState -Name $capName
