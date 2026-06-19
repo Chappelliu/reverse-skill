@@ -1,4 +1,4 @@
-[CmdletBinding()]
+﻿[CmdletBinding()]
 param(
     [string]$OutputMarkdown,
     [string]$OutputJson
@@ -45,6 +45,11 @@ $scriptRefs = @{
     'analyzeHeadless' = @('reverse-engineering/SKILL.md')
     'proxycat' = @('pentest-tools/SKILL.md')
     'nmap' = @('pentest-tools/SKILL.md')
+    'subfinder' = @('pentest-tools/references/recon-pipeline.md')
+    'dnsx' = @('pentest-tools/references/recon-pipeline.md')
+    'naabu' = @('pentest-tools/references/recon-pipeline.md')
+    'httpx' = @('pentest-tools/references/recon-pipeline.md')
+    'katana' = @('pentest-tools/references/recon-pipeline.md')
 }
 
 $reports = Get-ReverseToolReport
@@ -78,7 +83,7 @@ $markdownContent = ($markdownLines -join [Environment]::NewLine) + [Environment]
 $markdownContent | Set-Content -LiteralPath $OutputMarkdown -Encoding utf8
 
 # --- Capability status view ---
-$capabilityNames = @('jadx', 'apktool', 'frida', 'idalib-mcp', 'jshookmcp', 'anything-analyzer', 'idapro', 'r2', 'adb', 'agent-browser', 'ghidra-mcp', 'seclists', 'proxycat', 'burpsuite-mcp', 'nmap')
+$capabilityNames = @('jadx', 'apktool', 'frida', 'idalib-mcp', 'jshookmcp', 'anything-analyzer', 'idapro', 'r2', 'adb', 'agent-browser', 'ghidra-mcp', 'seclists', 'proxycat', 'burpsuite-mcp', 'nmap', 'subfinder', 'dnsx', 'naabu', 'httpx', 'katana')
 $capabilityRows = @()
 foreach ($capName in $capabilityNames) {
     $state = Get-ReverseCapabilityState -Name $capName

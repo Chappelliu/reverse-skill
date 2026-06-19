@@ -160,28 +160,28 @@ Pre-engagement 检查清单：
 
 ## 一、信息收集阶段 / Reconnaissance (TA0043)
 
-### 1.1 企业数字资产测绘
+### 1.1 企业数字资产测绘 (T1590, T1595)
+
+> **首选漏斗**：详细 5 阶段 (Subfinder → DNSx → Naabu → HTTPX → Katana) 与 MCP 调用方式见 [`pentest-tools/references/recon-pipeline.md`](../pentest-tools/references/recon-pipeline.md)。下面只保留快速调用片段，**深度执行 MUST 走 recon-pipeline.md** 避免双写漂移。
 
 ```bash
-# 子公司关联域名发现
-subfinder -d target.com -o subdomains.txt
-amass enum -d target.com -passive -o amass_results.txt
+# 快速链路（全自动，约 10 分钟出真实 Web 服务列表）
+subfinder -d target.com -all -o subs.txt
+dnsx -l subs.txt -a -resp -wd target.com -o live.txt
+naabu -l live.txt -top-ports 1000 -o ports.txt
+httpx -l ports.txt -status-code -title -tech-detect -mc 200,401,403 -json -o webs.json
+katana -u <(jq -r '.url' webs.json) -hl -jc -kf all -d 3 -j -o endpoints.json
 
-# 合并去重
-cat subdomains.txt amass_results.txt | sort -u > all_subs.txt
-
-# 存活探测
-httpx -l all_subs.txt -status-code -title -tech-detect -o alive.txt
-
-# 端口扫描（全端口）
-naabu -l all_subs.txt -top-ports 1000 -o ports.txt
-nmap -sV -sC -iL targets.txt -oA nmap_results
+# 补充：Amass 用于 OSINT 扩展（被动数据源差异）
+amass enum -d target.com -passive -o amass.txt
+nmap -sV -sC -iL ports.txt -oA nmap_deep   # 重点目标深扫
 ```
 
 **实战要点**：
 - 通过企查查/天眼查获取子公司列表，扩大攻击面
 - 关注测试环境（test.、dev.、staging.）和新上线系统
 - 证书透明度日志（crt.sh）发现隐藏域名
+- 漏斗每阶段输出到独立文件，断点重跑无需从头开始
 
 ### 1.2 敏感信息泄露狩猎
 

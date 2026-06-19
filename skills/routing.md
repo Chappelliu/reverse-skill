@@ -114,6 +114,11 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | "trace cleanup / anti-forensics" | `attack-chain/SKILL.md` — cleanup section |
 | "数据采集 / collection / 截屏键盘 / 邮件采集" | `pentest-tools/references/network-attack-defense.md#采集--collection-ta0009` |
 | "数据外带 / exfiltration / exfil / DNS 隧道 / 云外发" | `pentest-tools/references/network-attack-defense.md#外带--exfiltration-ta0010` |
+| "子域名收集 / asset discovery / 资产测绘 / subfinder" | `pentest-tools/references/recon-pipeline.md` — Stage 1 (T1590.005) |
+| "存活探测 / DNS 解析 / dnsx / wildcard" | `pentest-tools/references/recon-pipeline.md` — Stage 2 (T1590.002) |
+| "端口扫描漏斗 / naabu / Top 1000" | `pentest-tools/references/recon-pipeline.md` — Stage 3 (T1595.001) |
+| "Web 指纹 / httpx / tech detect / Title" | `pentest-tools/references/recon-pipeline.md` — Stage 4 (T1595.002) |
+| "深度爬取 / katana / API 端点发现 / headless crawl" | `pentest-tools/references/recon-pipeline.md` — Stage 5 (T1595.003) |
 | "full pentest / end-to-end" | `attack-chain/SKILL.md` — full chain planning |
 | "resource development / 资源开发 / phishing infra / C2 infra / 基础设施搭建 / 域名前置 / domain fronting / sock puppet / malleable C2" | `attack-chain/SKILL.md` §〇 Resource Development (TA0042) |
 | "from external to domain controller" | `attack-chain/SKILL.md` — cross-phase path orchestration |

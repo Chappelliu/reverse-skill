@@ -209,6 +209,61 @@
       "canAutoInstall": true,
       "verifyCommand": "pentestswarm",
       "note": "群体智能渗透框架。需要 Go 1.24+ 或 Docker。支持 MCP server 模式。需要 Claude/Ollama API key。"
+    },
+    {
+      "name": "subfinder",
+      "bootstrapKind": "github-release-zip",
+      "repo": "projectdiscovery/subfinder",
+      "assetRegex": "^subfinder_.*_windows_amd64\\.zip$",
+      "installDir": "%USERPROFILE%\\Tools\\subfinder",
+      "docsUrl": "https://github.com/projectdiscovery/subfinder",
+      "canAutoInstall": true,
+      "verifyCommand": "subfinder",
+      "note": "Recon pipeline stage 1 (T1590.005) 子域名被动收集。MCP 路线推荐 hexstrike-ai → mcp-kali-server 兜底。"
+    },
+    {
+      "name": "dnsx",
+      "bootstrapKind": "github-release-zip",
+      "repo": "projectdiscovery/dnsx",
+      "assetRegex": "^dnsx_.*_windows_amd64\\.zip$",
+      "installDir": "%USERPROFILE%\\Tools\\dnsx",
+      "docsUrl": "https://github.com/projectdiscovery/dnsx",
+      "canAutoInstall": true,
+      "verifyCommand": "dnsx",
+      "note": "Recon pipeline stage 2 (T1590.002) 存活验证 + 泛解析过滤。"
+    },
+    {
+      "name": "naabu",
+      "bootstrapKind": "github-release-zip",
+      "repo": "projectdiscovery/naabu",
+      "assetRegex": "^naabu_.*_windows_amd64\\.zip$",
+      "installDir": "%USERPROFILE%\\Tools\\naabu",
+      "docsUrl": "https://github.com/projectdiscovery/naabu",
+      "canAutoInstall": true,
+      "verifyCommand": "naabu",
+      "note": "Recon pipeline stage 3 (T1595.001) 端口探活。Windows SYN 模式需 Npcap (https://npcap.com)；缺则降级 connect 扫描。"
+    },
+    {
+      "name": "httpx",
+      "bootstrapKind": "github-release-zip",
+      "repo": "projectdiscovery/httpx",
+      "assetRegex": "^httpx_.*_windows_amd64\\.zip$",
+      "installDir": "%USERPROFILE%\\Tools\\httpx",
+      "docsUrl": "https://github.com/projectdiscovery/httpx",
+      "canAutoInstall": true,
+      "verifyCommand": "httpx",
+      "note": "Recon pipeline stage 4 (T1595.002) Web 指纹/Title/Tech/Hash。注意：与 Python httpx HTTP 库同名，安装路径靠前以避免被覆盖。"
+    },
+    {
+      "name": "katana",
+      "bootstrapKind": "github-release-zip",
+      "repo": "projectdiscovery/katana",
+      "assetRegex": "^katana_.*_windows_amd64\\.zip$",
+      "installDir": "%USERPROFILE%\\Tools\\katana",
+      "docsUrl": "https://github.com/projectdiscovery/katana",
+      "canAutoInstall": true,
+      "verifyCommand": "katana",
+      "note": "Recon pipeline stage 5 (T1595.003) headless 深度爬取。-hl 模式需要 Chrome/Chromium 已安装。"
     }
   ]
 }
