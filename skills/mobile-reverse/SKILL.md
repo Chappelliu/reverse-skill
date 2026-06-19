@@ -3,6 +3,9 @@
 > Android + iOS 统一逆向方法论
 > Frida / Objection / OWASP MSTG / SSL Pinning Bypass
 
+> ⚠️ **scope flag — ATT&CK Mobile 设备级红队不在范围**：本 skill 覆盖 **RE 视角的移动端安全审计**（OWASP MASTG、Frida 动态插桩、SSL pinning / root / 越狱检测绕过、密钥提取）。**不**覆盖 [ATT&CK Mobile 矩阵](https://attack.mitre.org/matrices/mobile/) 中的设备级红队动作（mobile C2、accessibility/device-admin 滥用、移动端持久化、移动端 collection / exfil 战术链）。如任务转向"在受害者真实手机上落地后渗透"，**请先提议新建 `mobile-redteam/` skill**。
+> 判断口诀：**"分析这个 APK / IPA 的安全性"** → 本 skill；**"在用户手机上跑 mobile C2 / 收集联系人短信外带"** → 新建 mobile-redteam/。
+
 ## 适用场景
 
 - Android APK 逆向与安全测试
