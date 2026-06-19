@@ -70,7 +70,9 @@ $mdFiles = Get-ChildItem -Path $Root -Recurse -Filter '*.md' |
     Where-Object { $_.FullName -notmatch '\\field-journal\\' }
 
 $violations = @()
-# Allow comma OR slash as separator: (TA0007 / TA0008) or (T1003, T1558)
+# Allow comma OR slash as separator: (TA0007 / TA0008) or (T1003, T1558).
+# Em-/en-dashes were tried but Windows PowerShell regex char-class semantics
+# made them brittle across encodings — stick to ASCII separators.
 $idRegex = '\(T(A?)\d{4}(\.\d{3})?(\s*[,/]\s*T(A?)\d{4}(\.\d{3})?)*\)'
 
 foreach ($file in $mdFiles) {

@@ -264,6 +264,126 @@
       "canAutoInstall": true,
       "verifyCommand": "katana",
       "note": "Recon pipeline stage 5 (T1595.003) headless 深度爬取。-hl 模式需要 Chrome/Chromium 已安装。"
+    },
+    {
+      "name": "aws-cli",
+      "bootstrapKind": "winget-package",
+      "wingetId": "Amazon.AWSCLI",
+      "docsUrl": "https://aws.amazon.com/cli/",
+      "canAutoInstall": true,
+      "verifyCommand": "aws",
+      "note": "cloud-attack/ AWS flow 必备。"
+    },
+    {
+      "name": "az-cli",
+      "bootstrapKind": "winget-package",
+      "wingetId": "Microsoft.AzureCLI",
+      "docsUrl": "https://learn.microsoft.com/cli/azure/",
+      "canAutoInstall": true,
+      "verifyCommand": "az",
+      "note": "cloud-attack/ Azure flow 必备。"
+    },
+    {
+      "name": "gcloud",
+      "bootstrapKind": "winget-package",
+      "wingetId": "Google.CloudSDK",
+      "docsUrl": "https://cloud.google.com/sdk",
+      "canAutoInstall": true,
+      "verifyCommand": "gcloud",
+      "note": "cloud-attack/ GCP flow 必备。"
+    },
+    {
+      "name": "kubectl",
+      "bootstrapKind": "winget-package",
+      "wingetId": "Kubernetes.kubectl",
+      "docsUrl": "https://kubernetes.io/docs/tasks/tools/",
+      "canAutoInstall": true,
+      "verifyCommand": "kubectl",
+      "note": "cloud-attack/ K8s 控制面 + container 横向必备。"
+    },
+    {
+      "name": "prowler",
+      "bootstrapKind": "pip-package",
+      "pipPackage": "prowler",
+      "docsUrl": "https://github.com/prowler-cloud/prowler",
+      "canAutoInstall": true,
+      "verifyCommand": "prowler",
+      "note": "cloud-attack/ 多云审计/错配扫描（AWS/Azure/GCP/K8s）。"
+    },
+    {
+      "name": "scoutsuite",
+      "bootstrapKind": "pip-package",
+      "pipPackage": "scoutsuite",
+      "docsUrl": "https://github.com/nccgroup/ScoutSuite",
+      "canAutoInstall": true,
+      "verifyCommand": "scout",
+      "note": "cloud-attack/ 多云资产+权限快照。"
+    },
+    {
+      "name": "pmapper",
+      "bootstrapKind": "pip-package",
+      "pipPackage": "principalmapper",
+      "docsUrl": "https://github.com/nccgroup/PMapper",
+      "canAutoInstall": true,
+      "verifyCommand": "pmapper",
+      "note": "cloud-attack/ AWS IAM 图建模 + privesc 路径搜索。"
+    },
+    {
+      "name": "pacu",
+      "bootstrapKind": "pip-package",
+      "pipPackage": "pacu",
+      "docsUrl": "https://github.com/RhinoSecurityLabs/pacu",
+      "canAutoInstall": true,
+      "verifyCommand": "pacu",
+      "note": "cloud-attack/ AWS 攻击模块仓库。Windows 上部分模块对 ~/.aws 路径假设——需 %USERPROFILE%\\.aws 已配置。"
+    },
+    {
+      "name": "cloudfox",
+      "bootstrapKind": "github-release-zip",
+      "repo": "BishopFox/cloudfox",
+      "assetRegex": "^cloudfox-windows-amd64-.*\\.zip$",
+      "installDir": "%USERPROFILE%\\Tools\\cloudfox",
+      "docsUrl": "https://github.com/BishopFox/cloudfox",
+      "canAutoInstall": true,
+      "verifyCommand": "cloudfox",
+      "note": "cloud-attack/ AWS 路径发现（Go binary）。"
+    },
+    {
+      "name": "roadtools",
+      "bootstrapKind": "pip-package",
+      "pipPackage": "roadrecon",
+      "docsUrl": "https://github.com/dirkjanm/ROADtools",
+      "canAutoInstall": false,
+      "verifyCommand": "roadrecon",
+      "manualInstallHint": "ROADtools 需 .NET 6+ runtime 与 Python 3.8+。先 winget install Microsoft.DotNet.SDK.6 → pip install roadrecon roadtx → 启动 roadrecon gui。bootstrap canAutoInstall=false 是因为 .NET runtime 在不同 Windows 镜像差异较大，需用户确认。"
+    },
+    {
+      "name": "azurehound",
+      "bootstrapKind": "github-release-zip",
+      "repo": "SpecterOps/AzureHound",
+      "assetRegex": "^azurehound-windows-amd64\\.zip$",
+      "installDir": "%USERPROFILE%\\Tools\\azurehound",
+      "docsUrl": "https://github.com/SpecterOps/AzureHound",
+      "canAutoInstall": false,
+      "verifyCommand": "azurehound",
+      "manualInstallHint": "AzureHound 是 Go binary，但用前需先有 Azure 应用注册（在目标 Entra 里建具备 Directory.Read.All 的 app）。从 release 下 zip → 解压 → 加 PATH → 在 Entra 建 app → azurehound list -u <appid> ..."
+    },
+    {
+      "name": "microburst",
+      "bootstrapKind": "powershell-module",
+      "psModule": "MicroBurst",
+      "psGalleryName": "MicroBurst",
+      "docsUrl": "https://github.com/NetSPI/MicroBurst",
+      "canAutoInstall": false,
+      "verifyCommand": "Get-Module MicroBurst -ListAvailable",
+      "manualInstallHint": "PSGallery 包名不一致——建议 git clone https://github.com/NetSPI/MicroBurst → Import-Module .\\MicroBurst\\MicroBurst.psm1。"
+    },
+    {
+      "name": "steampipe",
+      "bootstrapKind": "manual-only",
+      "docsUrl": "https://steampipe.io/downloads",
+      "canAutoInstall": false,
+      "manualInstallHint": "Steampipe 在 Windows 仅支持 WSL2。WSL2 内：sudo /bin/sh -c \"$(curl -fsSL https://steampipe.io/install/steampipe.sh)\"；之后 steampipe plugin install aws azure gcp。"
     }
   ]
 }

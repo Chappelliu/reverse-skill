@@ -35,7 +35,8 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | iOS app (IPA) | `mobile-reverse/` — class-dump/Hopper/Frida iOS | `reverse-engineering/platforms.md` |
 | **CTF competition (full stack)** | `../CTF-Sandbox-Orchestrator/ctf-sandbox-orchestrator/SKILL.md` — master entry | Route to 40+ sub-skills by evidence |
 | Web runtime / API | `../CTF-Sandbox-Orchestrator/competition-web-runtime/SKILL.md` | — |
-| Cloud / Container / K8s | `../CTF-Sandbox-Orchestrator/competition-agent-cloud/SKILL.md` | — |
+| Cloud / Container / K8s | `../CTF-Sandbox-Orchestrator/competition-agent-cloud/SKILL.md` |
+| **企业云租户红队（已拿凭据）** | **`cloud-attack/SKILL.md`** — AWS / Azure-Entra / GCP 全链路 | CTF 单题 → CTF orchestrator | — |
 | Windows / AD / Identity | `../CTF-Sandbox-Orchestrator/competition-identity-windows/SKILL.md` | — |
 | Forensics / PCAP / Steganography | `../CTF-Sandbox-Orchestrator/competition-forensic-timeline/SKILL.md` | — |
 | Prompt injection / Agent | `../CTF-Sandbox-Orchestrator/competition-prompt-injection/SKILL.md` | — |
@@ -88,6 +89,9 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | "cryptography / AES / RSA" | `reverse-engineering/patterns*.md` — crypto pattern recognition |
 | "protocol reverse / Protobuf / custom protocol" | `reverse-engineering/platforms.md` |
 | "cloud security / container escape / K8s" | `../CTF-Sandbox-Orchestrator/competition-agent-cloud/SKILL.md` |
+| "AWS pentest / 已拿 AWS 凭据 / IAM 提权 / S3 滥用 / role chaining" | `cloud-attack/references/aws-attack-flow.md` |
+| "Azure / Entra ID / Entra red team / Refresh Token / Service Principal / Managed Identity 滥用" | `cloud-attack/references/azure-entra-flow.md` |
+| "GCP red team / SA impersonation / GCS / 已拿 service-account JSON" | `cloud-attack/references/gcp-attack-flow.md` |
 | "Prompt injection / AI security" | `llm-security/SKILL.md` — OWASP LLM + ASI Top 10 |
 | "internal network / lateral movement" | `pentest-tools/SKILL.md` + `references/network-attack-defense.md` |
 | "privilege escalation" | `pentest-tools/references/network-attack-defense.md` — escalation section |
