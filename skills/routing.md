@@ -2,7 +2,7 @@
 
 Route tasks to the most appropriate skill module by target type, user intent, and toolchain.
 
-> **ATT&CK 14-tactic canonical map** → [`pentest-tools/references/network-attack-defense.md` §MITRE ATT&CK 映射](pentest-tools/references/network-attack-defense.md#mitre-attck-映射canonical-map--全包唯一规范映射表). Single source of truth — do NOT duplicate elsewhere. New tactic-level sections MUST be tagged bilingual with `(Txxxx)`.
+> **ATT&CK 14-tactic canonical map** → [`pentest-tools/references/network-attack-defense.md` §MITRE ATT&CK 映射](pentest-tools/references/network-attack-defense.md#mitre-attck-映射canonical-map-全包唯一规范映射表). Single source of truth — do NOT duplicate elsewhere. New tactic-level sections MUST be tagged bilingual with `(Txxxx)`.
 
 ## CRITICAL: Routing Execution Protocol
 
@@ -95,12 +95,12 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | "adversary emulation / 对抗模拟 / 紫队 / purple team / Atomic Red Team / invoke-atomictest" | `adversary-emulation/references/atomic-redteam-quickstart.md` |
 | "Caldera / sandcat agent / adversary profile / threat-informed" | `adversary-emulation/references/caldera-purple-team.md` |
 | "ATT&CK Navigator / navigator layer / coverage heatmap / 攻击覆盖热图" | `adversary-emulation/references/navigator-layer-schema.md` |
-| "AiTM / Adversary in the Middle / Evilginx / session cookie 窃取 / 钓鱼绕 MFA" | `pentest-tools/references/network-attack-defense.md#aitm-会话-cookie-窃取--aitm-session-cookie-theft-t1539` |
-| "MFA fatigue / push bombing / MFA 疲劳" | `pentest-tools/references/network-attack-defense.md#mfa-疲劳--mfa-fatigue--push-bombing-t1621` |
-| "浏览器密码 / Chrome cookies / HackBrowserData / 浏览器凭据" | `pentest-tools/references/network-attack-defense.md#浏览器凭据库--browser-credentials-t1555003` |
-| "KeePass / 密码管理器攻击 / KeeThief" | `pentest-tools/references/network-attack-defense.md#密码管理器--password-managers-t1555005` |
-| "OAuth token theft / Refresh Token 滥用 / TokenSmith / TeamFiltration" | `pentest-tools/references/network-attack-defense.md#oauth--应用-token-窃取--oauth-token-theft-t1528` |
-| "IPv6 中继 / mitm6 / NTLM relay over IPv6" | `pentest-tools/references/network-attack-defense.md#ipv6-中继--ipv6-ntlm-relay-t1557003` |
+| "AiTM / Adversary in the Middle / Evilginx / session cookie 窃取 / 钓鱼绕 MFA" | `pentest-tools/references/network-attack-defense.md#aitm-会话-cookie-窃取-aitm-session-cookie-theft-t1539` |
+| "MFA fatigue / push bombing / MFA 疲劳" | `pentest-tools/references/network-attack-defense.md#mfa-疲劳-mfa-fatigue-push-bombing-t1621` |
+| "浏览器密码 / Chrome cookies / HackBrowserData / 浏览器凭据" | `pentest-tools/references/network-attack-defense.md#浏览器凭据库-browser-credentials-t1555003` |
+| "KeePass / 密码管理器攻击 / KeeThief" | `pentest-tools/references/network-attack-defense.md#密码管理器-password-managers-t1555005` |
+| "OAuth token theft / Refresh Token 滥用 / TokenSmith / TeamFiltration" | `pentest-tools/references/network-attack-defense.md#oauth-应用-token-窃取-oauth-token-theft-t1528` |
+| "IPv6 中继 / mitm6 / NTLM relay over IPv6" | `pentest-tools/references/network-attack-defense.md#ipv6-中继-ipv6-ntlm-relay-t1557003` |
 | "Prompt injection / AI security" | `llm-security/SKILL.md` — OWASP LLM + ASI Top 10 |
 | "internal network / lateral movement" | `pentest-tools/SKILL.md` + `references/network-attack-defense.md` |
 | "privilege escalation" | `pentest-tools/references/network-attack-defense.md` — escalation section |
@@ -125,8 +125,8 @@ Route tasks to the most appropriate skill module by target type, user intent, an
 | "phishing / social engineering" | `attack-chain/SKILL.md` — phishing section |
 | "supply chain attack" | `attack-chain/SKILL.md` — supply chain section |
 | "trace cleanup / anti-forensics" | `attack-chain/SKILL.md` — cleanup section |
-| "数据采集 / collection / 截屏键盘 / 邮件采集" | `pentest-tools/references/network-attack-defense.md#采集--collection-ta0009` |
-| "数据外带 / exfiltration / exfil / DNS 隧道 / 云外发" | `pentest-tools/references/network-attack-defense.md#外带--exfiltration-ta0010` |
+| "数据采集 / collection / 截屏键盘 / 邮件采集" | `pentest-tools/references/network-attack-defense.md#采集-collection-ta0009` |
+| "数据外带 / exfiltration / exfil / DNS 隧道 / 云外发" | `pentest-tools/references/network-attack-defense.md#外带-exfiltration-ta0010` |
 | "子域名收集 / asset discovery / 资产测绘 / subfinder" | `pentest-tools/references/recon-pipeline.md` — Stage 1 (T1590.005) |
 | "存活探测 / DNS 解析 / dnsx / wildcard" | `pentest-tools/references/recon-pipeline.md` — Stage 2 (T1590.002) |
 | "端口扫描漏斗 / naabu / Top 1000" | `pentest-tools/references/recon-pipeline.md` — Stage 3 (T1595.001) |

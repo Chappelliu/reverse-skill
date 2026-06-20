@@ -1,4 +1,4 @@
-﻿# Attack Chain Orchestration Skill
+# Attack Chain Orchestration Skill
 
 > 多阶段攻击路径规划与执行的总指挥。当任务需要"从 A 打到 B"的完整链路时，本 Skill 负责编排各阶段、协调子 Skill、规划攻击路径。
 > 不是"红队专属"——任何需要跨阶段组合的渗透场景都从这里开始。
@@ -430,7 +430,7 @@ aws iam list-attached-user-policies --user-name compromised-user
 
 ### 4.1 凭据获取 / Credential Access (TA0006)
 
-> 现代凭据获取（AiTM cookie 窃取 / MFA 疲劳 / 浏览器与密码库 / OAuth token / IPv6 中继）详见 [`pentest-tools/references/network-attack-defense.md` §凭证获取](../pentest-tools/references/network-attack-defense.md#凭证获取--credential-access-ta0006)。本节只列经典 AD/本地链路。
+> 现代凭据获取（AiTM cookie 窃取 / MFA 疲劳 / 浏览器与密码库 / OAuth token / IPv6 中继）详见 [`pentest-tools/references/network-attack-defense.md` §凭证获取](../pentest-tools/references/network-attack-defense.md#凭证获取-credential-access-ta0006)。本节只列经典 AD/本地链路。
 
 ```bash
 # Mimikatz（Windows）
@@ -626,13 +626,13 @@ systemctl enable update.service
 
 ## 六.5 数据采集 / Collection (TA0009)
 
-> 详细技术与防御视角见 [`pentest-tools/references/network-attack-defense.md` §采集 / Collection (TA0009)](../pentest-tools/references/network-attack-defense.md#采集--collection-ta0009)。
+> 详细技术与防御视角见 [`pentest-tools/references/network-attack-defense.md` §采集 / Collection (TA0009)](../pentest-tools/references/network-attack-defense.md#采集-collection-ta0009)。
 
 落地后从已控终端取出有价值数据：屏幕/键盘/剪贴板、邮件、浏览器与密码库、本地/网络/云存储、SharePoint/Confluence/GitLab、归档与暂存。在 Phase 6 (Defense Evasion) 之后、Phase 6.7 (Exfiltration) 之前执行。
 
 ## 六.7 数据外带 / Exfiltration (TA0010)
 
-> 详细技术与防御视角见 [`pentest-tools/references/network-attack-defense.md` §外带 / Exfiltration (TA0010)](../pentest-tools/references/network-attack-defense.md#外带--exfiltration-ta0010)。
+> 详细技术与防御视角见 [`pentest-tools/references/network-attack-defense.md` §外带 / Exfiltration (TA0010)](../pentest-tools/references/network-attack-defense.md#外带-exfiltration-ta0010)。
 
 把采集到的数据带出目标网络：C2 信道、Web 服务（Telegram/GitHub/Mega/Pastebin）、备用协议（DNS/ICMP）、分块、转存到攻击者云账号。**先于 Phase 7 (Anti-Forensics) 完成**，避免清理后还要再开一条出站路径暴露自己。
 
